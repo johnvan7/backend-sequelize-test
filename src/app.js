@@ -1,6 +1,9 @@
-const { Sequelize } = require('sequelize');
 const dotenv = require('dotenv');
 const express = require('express');
+
+const Sequelize = require('sequelize');
+const sequelizeConfig = require('./config/config.json')[process.env.NODE_ENV || 'development'];
+const models = require('./models');
 
 dotenv.config();
 
@@ -8,12 +11,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASS,
+    sequelizeConfig.database,
+    sequelizeConfig.username,
+    sequelizeConfig.password,
     {
-        host: process.env.DB_HOST,
-        dialect: 'mysql'
+        host: sequelizeConfig.host,
+        dialect: sequelizeConfig.dialect,
     }
 );
 
