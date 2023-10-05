@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     startDate: DataTypes.DATE,
-    endDate: DataTypes.DATE
+    endDate: DataTypes.DATE,
+    level: DataTypes.ENUM('principiante', 'intermedio', 'avanzato'),
   }, {
     sequelize,
     modelName: 'Course',
