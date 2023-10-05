@@ -17,10 +17,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Instructor.init({
-    instructorId: DataTypes.INTEGER,
+    instructorId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    email: DataTypes.STRING
+    email: {
+      type: DataTypes.STRING,
+        unique: true,
+    }
   }, {
     sequelize,
     modelName: 'Instructor',

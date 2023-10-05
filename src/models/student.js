@@ -18,10 +18,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Student.init({
-    studentId: DataTypes.INTEGER,
+    studentId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      unique: true,
+    },
     points: DataTypes.INTEGER
   }, {
     sequelize,

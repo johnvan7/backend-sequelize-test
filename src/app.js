@@ -3,7 +3,7 @@ const express = require('express');
 
 const Sequelize = require('sequelize');
 const sequelizeConfig = require('./config/config.json')[process.env.NODE_ENV || 'development'];
-const models = require('./models');
+const apiRouterV1 = require('./routes/apiV1');
 
 dotenv.config();
 
@@ -19,6 +19,8 @@ const sequelize = new Sequelize(
         dialect: sequelizeConfig.dialect,
     }
 );
+
+app.use('/api/v1', apiRouterV1);
 
 sequelize.authenticate().then(() => {
     console.log('Connection has been established successfully.');

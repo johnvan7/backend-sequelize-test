@@ -23,7 +23,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Course.init({
-    courseId: DataTypes.INTEGER,
+    courseId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     startDate: DataTypes.DATE,
